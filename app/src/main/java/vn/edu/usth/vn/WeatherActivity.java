@@ -5,9 +5,12 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.media.MediaPlayer;
 import android.util.Log;
 
 public class WeatherActivity extends AppCompatActivity {
+
+    private MediaPlayer player;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,6 +19,8 @@ public class WeatherActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        player = MediaPlayer.create(this,R.raw.whis);
+        player.start();
         ForecastFragment firstFragment = new ForecastFragment();
         getSupportFragmentManager().beginTransaction()
                 .add(R.id.activity_weather, firstFragment, null)
